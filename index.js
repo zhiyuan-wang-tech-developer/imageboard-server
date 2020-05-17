@@ -2,6 +2,7 @@
 const express = require('express')
 // Import database
 const database = require('./database')
+const imageModel = require('./image/model')
 
 // Create a new express server
 const app = express()

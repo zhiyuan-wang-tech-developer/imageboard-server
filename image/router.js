@@ -3,12 +3,14 @@ const express = require('express')
 const { Router } = express
 // Import image model
 const imageModel = require('./model')
+// Import authentication middleware
+const authenticate = require('../auth/middleware')
 
-// Instantiate a new router
+// Instantiate a new /image router
 const router = new Router()
 
 // POST request to create a new image post in the database
-router.post('/image', (request, response, next) => {
+router.post('/image', authenticate, (request, response, next) => {
     imageModel
         .create(request.body)
         .then(image => {

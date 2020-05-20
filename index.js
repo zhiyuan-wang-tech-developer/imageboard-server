@@ -8,6 +8,8 @@ const bodyParser = require('body-parser')
 const database = require('./database')
 const imageModel = require('./image/model')
 const imageRouter = require('./image/router')
+const authRouter = require('./auth/router')
+const userRouter = require('./user/router')
 
 // Create a new express server
 const app = express()
@@ -28,6 +30,12 @@ const port = process.env.PORT || 4000
 
 // Register the image router
 app.use(imageRouter)
+
+// Register the authenticate router
+app.use(authRouter)
+
+// Register the user router
+app.use(userRouter)
 
 // Start the server
 app.listen(port, () => {
